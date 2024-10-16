@@ -24,13 +24,11 @@ Phase 4 (Phone Deployement): The final phase is to allow users to interact with 
 
 # Imports 
 from models import User, Program
+import sqlite3
 # Create User Class
 # Create a Program (workout program) class 
 # Create an exercise class (with weight and reps)
 
+# Fu
 testUser =   User("testUser", "Ernest", "Hemingway", 225)
-testUser.printUserInfo()
-print()
-testUser.updateWeight()
-print()
-testUser.printUserInfo()
+

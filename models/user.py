@@ -10,7 +10,7 @@ class User:
       self.lName = lName
       self.startingWeight = startingWeight
       self.userWeight = startingWeight
-      # Check that startingweight is an int
+      # Check that startingweight is an intgit
       if not isinstance(startingWeight, int):
           raise TypeError(f"Weight must be an integer, got {type(startingWeight).__name__}")
     
@@ -27,7 +27,7 @@ class User:
              print("Invalid input! Please enter a valid integer.")
        #update the variable
        self.userWeight = weight
-      
+             
 # Display User Information
     def printUserInfo(self):
       print(f"UserName: {self.userName} \nWeight: {self.userWeight} \nStarting Weight: {self.startingWeight}")  
