@@ -17,14 +17,13 @@ class Workout:
         name = input("Enter exercise name: ")
         duration = int(input("Enter duration in minutes: "))
         intensity = input("Enter intensity (low, medium, high): ")
-        # Assuming cal_out is determined by intensity
         cal_out = {'low': 5, 'medium': 8, 'high': 12}[intensity.lower()]
         return cls(name, cal_out, duration)
 
     def display_workout(self):
         print(f"Exercise name: {self.name}")
         print(f"Duration: {self.time} minutes")
-        print(f"Calories burned: {self.total}")
+        print(f"Calories burned: {self.total}\n")
 
 if __name__ == '__main__':
     list_exercises = []
@@ -38,5 +37,4 @@ if __name__ == '__main__':
 
 
     for ex in list_exercises:
-        #I can't get this shit to print
-        '''Workout.display_workout'''
+        ex.display_workout()
