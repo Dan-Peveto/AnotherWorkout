@@ -37,4 +37,5 @@ if __name__ == '__main__':
 
 
     for ex in list_exercises:
-        ex.display_workout()
+        #I can't get this shit to print
+        '''Workout.display_workout'''
