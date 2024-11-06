@@ -4,15 +4,21 @@
 class User:
       
 # constuctor with UserName, First Name, Last Name, Weight
-    def __init__(self, userName: str, fName: str, lName: str, startingWeight: int):
+    @staticmethod
+    def speakHere():
+       print("The user is here")
+    def __init__(self, userName: str, fName: str, lName: str, startingWeight: int, userWeight: int):
       self.userName = userName
       self.fName = fName
       self.lName = lName
       self.startingWeight = startingWeight
-      self.userWeight = startingWeight
+      self.userWeight = userWeight
       # Check that startingweight is an intgit
       if not isinstance(startingWeight, int):
           raise TypeError(f"Weight must be an integer, got {type(startingWeight).__name__}")
+      if not isinstance(userWeight, int):
+         raise TypeError(f"Weight must be an integer, got {type(userWeight).__name__}")
+ 
     
     # Method that updates the userWeight the weight change percentage
     def updateWeight(self):

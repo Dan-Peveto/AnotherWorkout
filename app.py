@@ -22,13 +22,26 @@ Phase 3 (Limited Deployement): The object of phase three is to generate UI using
 Phase 4 (Phone Deployement): The final phase is to allow users to interact with the app on a smartphone
  """
 
-# Imports 
-from models import User, Program
-import sqlite3
-# Create User Class
-# Create a Program (workout program) class 
+from models.userManager import UserManager
+
+
+# test new user creation 
+UserManager.welcomeUser()
+#Create a Program workout program) class 
 # Create an exercise class (with weight and reps)
 
-# Fu
-testUser =   User("testUser", "Ernest", "Hemingway", 225)
+
+# Save new user
+#UserDatabaseManager.save(testUser)
+# Load new user
+#userData = UserDatabaseManager.load("justATest")
+#if userData:
+    #print(f"User found: {userData}")
+#else:
+    #print("No user found")
+    
+
+# TODO: Logic to allow user to create a newUser, save newUser, and then load newUser and display 
+
+
 
