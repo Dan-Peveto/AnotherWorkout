@@ -1,9 +1,8 @@
 {
   "ExpandedNodes": [
     "",
-    "\\models",
-    "\\venv\\Include"
+    "\\models"
   ],
-  "SelectedNode": "\\models\\util.py",
+  "SelectedNode": "\\app.py",
   "PreviewInSolutionExplorer": false
 }

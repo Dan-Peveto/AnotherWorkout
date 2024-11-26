@@ -16,7 +16,8 @@ class UserManager:
     #TODO Place in Util.tryAgain
     def welcomeUser():
         # Welcom Screen = 1. Make User 2. Load User   
-        while True:    
+        while True:   
+  
             # Print Welcome Statement
             print("Welcome to Just Another Workout App")
             print("1. Create New User")

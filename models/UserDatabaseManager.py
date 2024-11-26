@@ -5,10 +5,7 @@ from models.util import Util
 # To write and read from database
 
 class UserDatabaseManager:
-    
- 
-   
-        
+         
     # method to save
     @staticmethod
     def save(userInput):
