@@ -1,8 +1,8 @@
 
-from models import userDatabaseManager
-from models.user import User
+from models.DataBaseManagement import userDatabaseManager
+from models.UserModels.user import User
 from models.util import Util
-from models.userDatabaseManager import UserDatabaseManager
+from models.DataBaseManagement.userDatabaseManager import UserDatabaseManager
 
 #TODO: add clear screen methods across Class for screen readability
 

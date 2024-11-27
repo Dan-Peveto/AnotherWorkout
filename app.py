@@ -22,7 +22,7 @@ Phase 3 (Limited Deployement): The object of phase three is to generate UI using
 Phase 4 (Phone Deployement): The final phase is to allow users to interact with the app on a smartphone
  """
 
-from models.userManager import UserManager
+from models.UserModels.userManager import UserManager
 
 
 # test new user creation 

@@ -1,8 +1,10 @@
 
-from collections import UserString
+
 import sqlite3
 from models.util import Util
 # To write and read from database
+
+# Class with static methods for saving and loading Users
 
 class UserDatabaseManager:
          
@@ -12,7 +14,7 @@ class UserDatabaseManager:
         user = userInput.upper()
         print("Saving User")
         #establish connection 
-        connection = sqlite3.connect('users.db')
+        connection = sqlite3.connect('AnotherWorkoutDatabase.db')
         # create cursor variable to allow database interaction
         cursor = connection.cursor()
         # Create user table
