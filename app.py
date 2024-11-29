@@ -9,20 +9,24 @@ Phase 1 (Initial Code): The object of phase one is to create a fully functioning
     - Create customized workout plan
     - Record workouts in real time
     - Pull history of workouts
- 
-    TODO: 
-        ** Test excerciseDataBaseManager
-            **Test Mass save from CSV Method**
-        Populate Exercise Class with Mass Save Method
     TODO:
         Create Workout Class
+        Workout class
+        Fields:
+            Exercise / Reps / Sets 
+            or 
+            Exercise / distance or time / repititions
 
     TODO: 
         Create Program Class
+        Create logic to save a program and logic to rebuild a program with exercises everytime the app is used. 
 
+    TODO:
+        Create a link between User and a Specific Program they have chosen 
+        
 Phase 2 (App Refinement): The object of phase two is to refine the initial app to allow user the following:
-    - Choose premade workouts
-    - Customize premade workouts
+    - Create premade workouts
+    - Create Database functionality to track user progress and display progress to the user
     
 Phase 3 (Limited Deployement): The object of phase three is to generate UI using Django. After this phase the user will be able to:
     - Log into the online application
@@ -35,6 +39,7 @@ Phase 4 (Phone Deployement): The final phase is to allow users to interact with 
 from models.UserModels.userManager import UserManager # Import UserManager
 from models.ProgramModels.exercise import Exercise # Import Exercise
 from models.DataBaseManagement.exerciseDatabaseManager import ExerciseDatabaseManager # Import ExerciseDatabaseManager
+
 
 
 # To Enter App UserManager.welcomeUser()
@@ -52,9 +57,12 @@ ExerciseDatabaseManager.printTable()
 #Load Method // Test Good
 #Print Method // Test Good
 
-exerciseDict = ExerciseDatabaseManager.loadUser(['PUSH-UP']) 
+"""exerciseDict = ExerciseDatabaseManager.loadUser(['PUSH-UP']) 
 loadedExercise = Exercise(exerciseDict['exerciseName'], exerciseDict['targetAreaTags'], exerciseDict['isAnaerobic'])
-loadedExercise.printClass()
+loadedExercise.printClass()"""
+
+csvFile = r"C:\Users\Danie\source\PythonProjects\WorkoutApp\CompanionFiles\MassExerciseUpload.CSV"
 
 #Mass save from CSV Method
-            
+
+ExerciseDatabaseManager.printTable();

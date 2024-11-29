@@ -96,10 +96,10 @@ class ExerciseDatabaseManager:
                     # convert the comma-sepearted string to a list and then back to a comma seperated string
                     targetAreaTags = row['targetAreaTags']
                     # convert CSV string to int 
-                    isAnaerobic = int(row[isAnaerobic])
+                    isAnaerobic = int(row['isAnaerobic'])
                     # Add it to the database
                     cur.execute(""" 
-                        INSERT OR REPLACE INTO exercises (exerciseNae, targetAreaTags, isAnaerobic)
+                        INSERT OR REPLACE INTO exercises (exerciseName, targetAreaTags, isAnaerobic)
                         VALUES (?, ?, ?)
                     """, (exerciseName, targetAreaTags, isAnaerobic))
             # Committ and Let me know
