@@ -10,42 +10,49 @@ class UserDatabaseManager:
          
     # method to save
     @staticmethod
-    def save(userInput):
-        user = userInput.upper()
-        print("Saving User")
+    def saveUser(userClass):
+        
         #establish connection 
         connection = sqlite3.connect('AnotherWorkoutDatabase.db')
-        # create cursor variable to allow database interaction
-        cursor = connection.cursor()
-        # Create user table
-        cursor.execute("""
-        CREATE TABLE IF NOT EXISTS  users (
-            userName TEXT PRIMARY KEY, -- Primary key (unique)
-            fName TEXT NOT NULL,
-            lName TEXT NOT NULL,
-            startingWeight INTEGER NOT NULL,
-            userWeight INTEGER NOT NULL
-        )
-   """, )
+        # Try
+        try:
+            # create cursor variable to allow database interaction
+            cursor = connection.cursor()
+            # Create user table
+            cursor.execute("""
+            CREATE TABLE IF NOT EXISTS  users (
+                userName TEXT PRIMARY KEY, -- Primary key (unique)
+                fName TEXT NOT NULL,
+                lName TEXT NOT NULL,
+                startingWeight INTEGER NOT NULL,
+                userWeight INTEGER NOT NULL
+                )
+            """)
         
-        cursor.execute(""" 
-            INSERT OR REPLACE INTO users (userName, fName, lName, startingWeight, userWeight)
-            VALUES (?, ?, ?, ?, ?)
-        """, (user.userName, user.fName, user.lName, user.startingWeight, user.userWeight))
+            cursor.execute(""" 
+                INSERT OR REPLACE INTO users (userName, fName, lName, startingWeight, userWeight)
+                VALUES (?, ?, ?, ?, ?)
+                """, (userClass.userName, userClass.fName, userClass.lName, userClass.startingWeight, userClass.userWeight))
         
-        # Commit the transaction and close the connection 
-        connection.commit()
-        connection.close()
-        Util.clearScreen(3)
+            # Commit the transaction and close the connection 
+            connection.commit()
+
+        except sqlite3.Error as e:
+            print(f"Database error occurredL {e}")
+        # Error handling for nonDatabase error
+        except Exception as e:
+            print(f"An unexpected error occurred: {e}")
+        finally:
+            connection.close()
+        
         
         
         
     # Method to load
     @staticmethod    
-    def load(userNameInput):
-        userName = userNameInput.upper()
+    def loadUser(userName):
         # establish connection 
-        connection = sqlite3.connect('users.db')
+        connection = sqlite3.connect('AnotherWorkoutDatabase.db')
         # create cursor variable to allow database interaciton 
         cursor = connection.cursor()
         
@@ -54,7 +61,7 @@ class UserDatabaseManager:
             SELECT userName, fName, lName, startingWeight, userWeight
             FROM Users 
             WHERE userName = ?
-        """, (userName,))
+        """, (userName))
         
         # Fetch one record
         row = cursor.fetchone()
@@ -84,7 +91,7 @@ class UserDatabaseManager:
     def checkUserName(userNameInput):
         userName = userNameInput.upper()
         #establish connection 
-        connection = sqlite3.connect("users.db")
+        connection = sqlite3.connect("AnotherWorkoutDatabase.db")
         # Create cursor variable to allow database interaction
         cursor = connection.cursor()
         #query to check if the userName exists
@@ -107,7 +114,7 @@ class UserDatabaseManager:
             Util.clearScreen(1)
             print("You have chosen to delete the entire database...no going back now")
             #establish connection 
-            connection = sqlite3.connect("users.db")
+            connection = sqlite3.connect("AnotherWorkoutDatabase.db")
             cursor = connection.cursor()
             # Execute the DELETE statement to clear the table
             cursor.execute("DLETE FROM users")
@@ -119,12 +126,3 @@ class UserDatabaseManager:
             pass
 
     
-
-
-
-
-
-
-
-
-# TODO: Add check of database so that no two username's are created  

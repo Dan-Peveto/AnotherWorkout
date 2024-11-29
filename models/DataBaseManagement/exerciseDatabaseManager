@@ -1,0 +1,72 @@
+# Imports
+import sqlite3
+from models.util import Util
+
+# Class contains logic for saving exercises 
+class ExerciseDatabaseManager:
+
+    # Method to save 
+    @staticmethod
+    def saveExercise(exerciseClass):
+        # Establish Connection 
+        conn = sqlite3.connect('AnotherWorkoutDatabase.db')
+        try:
+            # Create cursor 
+            cur = conn.cursor()
+            # Create Exercise Table
+            cur.execute(""" 
+            CREATE TABLE IF NOT EXISTS exercises (
+                exerciseName TEXT PRIMARY KEY, -- Primary Key (unique)
+                targetAreaTags TEXT NOT NULL, 
+                isAnaerobic INTEGER NOT NULL -- Store booleans as integers
+                )
+            """)
+            # Create execute demand for incoming data 
+            cur.execute(""" 
+                INSERT OR REPLACE INTO exercises (exerciseName, targetAreaTags, isAnaerobic)
+                VALUES (?, ?, ?)
+                """), (exerciseClass.exerciseName, exerciseClass.targetAreaTags, int(exerciseClass.isAnaerobic))
+            # Commit
+            conn.commit;
+        # Error handling for database error
+        except sqlite3.Error as e:
+            print(f"Database error occurredL {e}")
+        # Error handling for nonDatabase error
+        except Exception as e:
+            print(f"An unexpected error occurred: {e}")
+        finally:
+            #close the dB
+            conn.close()
+
+
+    # Method to load
+    @staticmethod
+    def loadUser(exerciseName):
+        #Establish Connectino 
+        conn = sqlite3.connect('AnotherWorkoutDatabase.db')
+        # Create cursor
+        cur = conn.cursor()
+
+        # query to select exercise by exercise name
+        cur.execute(""" 
+            SELECT exerciseName, targetAreaTags, isAnaerobic)
+            FROM exercises
+            WHERE exerciseName = ?           
+            """, (exerciseName))
+        
+        # Fetch one record
+        row = cur.fetchone()
+
+        # Close the connection 
+        conn.close()
+        # If row found an exercise
+        if (row):
+            # Unpack and return a dictionary 
+            exerciseName, targetAreaTags, isAnaerobic = row
+            return {
+                'exerciseName': exerciseName,
+                'targetAreaTags': targetAreaTags,
+                'isAnaerobic': bool(isAnaerobic)
+            }
+
+    
