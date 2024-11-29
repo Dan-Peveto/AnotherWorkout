@@ -45,7 +45,7 @@ class ExerciseDatabaseManager:
 
     # Method to load
     @staticmethod
-    def loadUser(exerciseName):
+    def loadExercise(exerciseName):
         #Establish Connectino 
         conn = sqlite3.connect('AnotherWorkoutDatabase.db')
         # Create cursor

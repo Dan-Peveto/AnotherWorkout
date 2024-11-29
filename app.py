@@ -12,10 +12,7 @@ Phase 1 (Initial Code): The object of phase one is to create a fully functioning
  
     TODO: 
         ** Test excerciseDataBaseManager
-            **Test Save Method, 
-                   Load Method
-                   Print Method
-                   Mass save from CSV Method
+            **Test Mass save from CSV Method**
         Populate Exercise Class with Mass Save Method
     TODO:
         Create Workout Class
@@ -54,6 +51,7 @@ ExerciseDatabaseManager.printTable()
 # Test Save Method // Test Good
 #Load Method // Test Good
 #Print Method // Test Good
+
 exerciseDict = ExerciseDatabaseManager.loadUser(['PUSH-UP']) 
 loadedExercise = Exercise(exerciseDict['exerciseName'], exerciseDict['targetAreaTags'], exerciseDict['isAnaerobic'])
 loadedExercise.printClass()

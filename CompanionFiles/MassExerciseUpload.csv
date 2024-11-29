@@ -1,0 +1,10 @@
+exerciseName,targetAreaTags,isAnaerobic
+walk,conditioning,0
+jog,"conditioning,legs,core",0
+sprints,"conditioning,legs,core",0
+plank,core,1
+push-ups,"chest,tris,core",1
+squats,"legs,quads,hamstrings",1
+lunges,"legs,quads,hamstrings,isolated",1
+side-plank,core,1
+Burpees,"soul,chest,tris,core,legs",0
