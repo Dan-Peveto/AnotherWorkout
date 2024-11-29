@@ -1,5 +1,6 @@
 # Imports
 import sqlite3
+import csv
 from models.util import Util
 
 # Class contains logic for saving exercises 
@@ -87,7 +88,7 @@ class ExerciseDatabaseManager:
             )
             """)
             # Open the CSV File 
-            with open(csvFilePath, newline='', encoding='utf-8') as csvfile:
+            with open(CSVFilePath, newline='', encoding='utf-8') as csvfile:
                 reader = csv.DictReader(csvfile)
                 for row in reader:
                     exerciseName = row['exerciseName']
@@ -115,3 +116,18 @@ class ExerciseDatabaseManager:
         finally:
             #close the dB
             conn.close()
+
+    def printTable():
+        # establish connection
+        conn = sqlite3.connection("anotherWokroutDatabase.db")
+        # make cursor
+        cur = conn.cursor()
+        # Create counter
+        count = 1
+        # iterate over each row 
+        for row in cur.execute("SELECT exerciseName FROM exercies"):
+            # Print count and then row infor
+            print(f"{count}: {row[0]}")
+            count+=1
+        # Print "Number of rows: {count}"
+        print(f"Total Exercises Saved: {count}")
