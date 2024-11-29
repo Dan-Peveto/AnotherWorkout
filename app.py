@@ -11,10 +11,12 @@ Phase 1 (Initial Code): The object of phase one is to create a fully functioning
     - Pull history of workouts
  
     TODO: 
-        
-        ** Create Exercise Save Logic **
-        Create Mass Save Class
-        Populate Exercise Class with Mass Save Class 
+        ** Test excerciseDataBaseManager
+            **Test Save Method, 
+                   Load Method
+                   Print Method
+                   Mass save from CSV Method
+        Populate Exercise Class with Mass Save Method
     TODO:
         Create Workout Class
 
@@ -33,26 +35,28 @@ Phase 3 (Limited Deployement): The object of phase three is to generate UI using
 Phase 4 (Phone Deployement): The final phase is to allow users to interact with the app on a smartphone
  """
 
-from models.UserModels.userManager import UserManager
+from models.UserModels.userManager import UserManager # Import UserManager
+from models.ProgramModels.exercise import Exercise # Import Exercise
+from models.DataBaseManagement.exerciseDatabaseManager import ExerciseDatabaseManager # Import ExerciseDatabaseManager
 
 
-# test new user creation 
-UserManager.welcomeUser()
-#Create a Program workout program) class 
-# Create an exercise class (with weight and reps)
+# To Enter App UserManager.welcomeUser()
+"""
+# Create Instance of Exercise and print
+name =  "PUSH-UP"
+targetAreaTags = ["Chest", "Triceps", "Core"]
+isAnaerobic = True
 
+pushup = Exercise(name, targetAreaTags, isAnaerobic)
+ExerciseDatabaseManager.saveExercise(pushup)
+ExerciseDatabaseManager.printTable()
+"""
+# Test Save Method // Test Good
+#Load Method // Test Good
+#Print Method // Test Good
+exerciseDict = ExerciseDatabaseManager.loadUser(['PUSH-UP']) 
+loadedExercise = Exercise(exerciseDict['exerciseName'], exerciseDict['targetAreaTags'], exerciseDict['isAnaerobic'])
+loadedExercise.printClass()
 
-# Save new user
-#UserDatabaseManager.save(testUser)
-# Load new user
-#userData = UserDatabaseManager.load("justATest")
-#if userData:
-    #print(f"User found: {userData}")
-#else:
-    #print("No user found")
-    
-
-# TODO: Logic to allow user to create a newUser, save newUser, and then load newUser and display 
-
-
-
+#Mass save from CSV Method
+            

@@ -26,14 +26,15 @@ class ExerciseDatabaseManager:
             targetAreaTagsStr = ','.join(exerciseClass.targetAreaTags)
             # Create execute demand for incoming data 
             cur.execute(""" 
-                INSERT OR REPLACE INTO exercises (exerciseName, targetAreaTagsStr, isAnaerobic)
+                INSERT OR REPLACE INTO exercises (exerciseName, targetAreaTags, isAnaerobic)
                 VALUES (?, ?, ?)
-                """), (exerciseClass.exerciseName, exerciseClass.targetAreaTags, int(exerciseClass.isAnaerobic))
+                """, (exerciseClass.exerciseName, targetAreaTagsStr, int(exerciseClass.isAnaerobic)))
+            
             # Commit
-            conn.commit;
+            conn.commit()
         # Error handling for database error
         except sqlite3.Error as e:
-            print(f"Database error occurredL {e}")
+            print(f"Database error occurred {e}")
         # Error handling for nonDatabase error
         except Exception as e:
             print(f"An unexpected error occurred: {e}")
@@ -52,7 +53,7 @@ class ExerciseDatabaseManager:
 
         # query to select exercise by exercise name
         cur.execute(""" 
-            SELECT exerciseName, targetAreaTags, isAnaerobic)
+            SELECT exerciseName, targetAreaTags, isAnaerobic
             FROM exercises
             WHERE exerciseName = ?           
             """, (exerciseName))
@@ -119,15 +120,13 @@ class ExerciseDatabaseManager:
 
     def printTable():
         # establish connection
-        conn = sqlite3.connection("anotherWokroutDatabase.db")
+        conn = sqlite3.connect("AnotherWorkoutDatabase.db")
         # make cursor
         cur = conn.cursor()
-        # Create counter
-        count = 1
         # iterate over each row 
-        for row in cur.execute("SELECT exerciseName FROM exercies"):
-            # Print count and then row infor
-            print(f"{count}: {row[0]}")
-            count+=1
+        cur.execute("SELECT * FROM exercises")
+        rows = cur.fetchall()
+        for index, row in enumerate(rows, start=1):
+            print(f"Exercise {index}: {row[0]}")
         # Print "Number of rows: {count}"
-        print(f"Total Exercises Saved: {count}")
+        print(f"Total Exercises Saved: {len(rows)}")
