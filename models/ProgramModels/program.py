@@ -1,7 +1,18 @@
 
 class Program:
-    # Init Method will take in a list of seven list as such [[exerciseName, sets, reps] ... ] index 1 = day 1...Off days will be signified as empty lists
-    def __init__(self, programList):
-        if not isinstance(programList, list):
-           raise TypeError("inputList must be a list")
-        self.programList = programList
+    # create program class
+    def __init__(self, instructionDict): # instruction Dict will be {Week1: [list of list with instuctions for the workout week class]}
+        if not isinstance(instructionDict, list):
+            raise TypeError("instructionList must be a list")
+        self.programList = []
+        # use diction to create the list
+        for key in instructionDict:
+            self.programList.append(key, instructionDict[key])
+    
+    # Methods
+    def lengthOfProgram(self):
+        # use the length of the program list to determine how long the program is
+        print("lengthOfProgram")
+    
+
+

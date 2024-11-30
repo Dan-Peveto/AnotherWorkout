@@ -9,20 +9,15 @@ Phase 1 (Initial Code): The object of phase one is to create a fully functioning
     - Create customized workout plan
     - Record workouts in real time
     - Pull history of workouts
-    TODO:
-        Create Workout Class
-        Workout class
-        Fields:
-            Exercise / Reps / Sets 
-            or 
-            Exercise / distance or time / repititions
-
     TODO: 
-        Create Program Class
-        Create logic to save a program and logic to rebuild a program with exercises everytime the app is used. 
-
+        Build at least 2 premade programs and store in database
+        Build logic to save from CSV 
     TODO:
         Create a link between User and a Specific Program they have chosen 
+    TODO:
+        Build UserInterface class
+
+
         
 Phase 2 (App Refinement): The object of phase two is to refine the initial app to allow user the following:
     - Create premade workouts
