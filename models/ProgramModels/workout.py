@@ -1,10 +1,8 @@
-# Class for individual workouts
-class Workout:
-    def __init__(self, name, cal_out, time):
-        self.name = name
-        self.cal_out = cal_out
-        self.time = time
-        self.total = 0  # Initialize total calories burned
 
-    def cal_burned(self):
-        self.total = self.cal_out * self.time
+class Workout:
+
+    def __init__(self, exerciseDict ):
+        if not isinstance(exerciseDict, dict):
+            raise TypeError("exerciseDict must be a dictionary") #{Day 1: [exerciseName, reps, sets] Day 2: ...}
+        self.exerciseDict = exerciseDict 
+                
