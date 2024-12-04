@@ -1,19 +1,26 @@
 
-class WorkWeek:
-    # Init Method will take in a list of seven list as such [[exerciseName, sets, reps] ... ] index 1 = day 1...Off days will be signified as empty lists
-    def __init__(self, programList):
-        if not isinstance(programList, list):
-           raise TypeError("List must be a list")
-        self.programList = programList
-        # Build 7 variables that are dictionaries for each workout if the workout is a skip create dictionary that is {skip: Random Quote}...Connect to random quote genorator API
-        day1 = programList[0]
-        day2 = programList[1]
-        day3 = programList[2]
-        day4 = programList[3]
-        day5 = programList[4]
-        day6 = programList[5]
-        day7 = programList[6]
+from workout import Workout
 
+class WorkWeek:
+    # Init Method will take in a dictionary of seven dictionaries list as such: { week 1 : { movement 1 : [exericeName, Reps, Sets]}} Off days will be signified as empty lists
+    def __init__(self, programDict):
+        if not isinstance(programDict, dict):
+           raise TypeError("List must be a list")
+        self.programDict = programDict
+        self.workWeekDict = {}
+
+    def makeWorkWeek(self):
+        # Take in a dictionary with seven keys (one for each day) and the value is a list of to create a workout instance
+        workWeekDict = {}
+        weekCount = 1 # Key to keep track of week
+        # For each key make a workout instance
+        for key in self.programDict:
+            # Create an instance of workout for each movement stored at each week
+            workout = Workout.makeWorkout(self.programDict[key])
+            # Push new instances onto return dictionary with each day a key
+            self.workWeekDict[key] = workout
+        # return dictionary
+        return self.workWeekDict
         
 
     
