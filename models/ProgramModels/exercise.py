@@ -1,14 +1,15 @@
 # Class for excercise
 class Exercise:
     # initialize class
-    def __init__(self, name, targetAreaTags, isAnaerobic: bool):
-        self.exerciseName = name; # String for name 
+    def __init__(self, exerciseName, targetAreaTags, isAnaerobic):
+        
+        self.exerciseName = exerciseName; # String for name 
         if not isinstance(targetAreaTags, list):
             raise ValueError("targetAreaTag must be a list")
-        self.targetAreaTags = targetAreaTags; # String for 
+        self.targetAreaTags = targetAreaTags; 
         if not isinstance(isAnaerobic, bool):
             raise ValueError("isAnaerobic must be a boolean value")
-        self.isAnaerobic = isAnaerobic;
+        self.isAnaerobic = isAnaerobic
 
     # Method to add tag 
     def addSingleTag(self, tag):
@@ -26,10 +27,12 @@ class Exercise:
 
 
     # Print to console
-    def printClass(self):
+    def printExercise(self):
         print(f"{self.exerciseName}:")
         print(self.targetAreaTags)
         if (self.isAnaerobic):
             print("Strength")
         else:
             print("Conditioning")
+
+            # name, targetAreaTags, isAnaerobic: bool

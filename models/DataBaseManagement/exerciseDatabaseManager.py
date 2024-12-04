@@ -1,7 +1,7 @@
 # Imports
 import sqlite3
 import csv
-from models.util import Util
+#TODO: Create error handing if key is not correct
 
 # Class contains logic for saving exercises 
 class ExerciseDatabaseManager:
@@ -56,7 +56,7 @@ class ExerciseDatabaseManager:
             SELECT exerciseName, targetAreaTags, isAnaerobic
             FROM exercises
             WHERE exerciseName = ?           
-            """, (exerciseName))
+            """, (exerciseName,))
         
         # Fetch one record
         row = cur.fetchone()
@@ -69,11 +69,7 @@ class ExerciseDatabaseManager:
             exerciseName, targetAreaTags, isAnaerobic = row
             # Convert back to list
             targetAreaTagsList = targetAreaTags.split(",")
-            return {
-                'exerciseName': exerciseName,
-                'targetAreaTags': targetAreaTagsList,
-                'isAnaerobic': bool(isAnaerobic)
-            }
+            return [exerciseName, targetAreaTagsList, bool(isAnaerobic)]
 
     def massLoadFromCSV(CSVFilePath):
         # Create Connection 
