@@ -34,7 +34,7 @@ Phase 4 (Phone Deployement): The final phase is to allow users to interact with 
 from models.UserModels.userManager import UserManager # Import UserManager
 from models.ProgramModels.exercise import Exercise # Import Exercise
 from models.DataBaseManagement.exerciseDatabaseManager import ExerciseDatabaseManager # Import ExerciseDatabaseManager
-
+from models.ProgramModels.workout import Workout
 
 
 # To Enter App UserManager.welcomeUser()
@@ -56,8 +56,27 @@ ExerciseDatabaseManager.printTable()
 loadedExercise = Exercise(exerciseDict['exerciseName'], exerciseDict['targetAreaTags'], exerciseDict['isAnaerobic'])
 loadedExercise.printClass()"""
 
-csvFile = r"C:\Users\Danie\source\PythonProjects\WorkoutApp\CompanionFiles\MassExerciseUpload.CSV"
+# csvFile = r"C:\Users\Danie\source\PythonProjects\WorkoutApp\CompanionFiles\MassExerciseUpload.CSV"
 
 #Mass save from CSV Method
 
 ExerciseDatabaseManager.printTable();
+# Make workoutList for use in test
+workoutDict = {
+    1 : ["push-ups", ["Chest", "Arms"], False],
+    2 : ["squats", ["Legs", "Core"], False],
+    3 : ["jog", ["Legs", "Soul"], True]
+}
+# create class 
+
+testWorkout = Workout(workoutDict)
+
+# call makeWorkout
+testMakeWorkout = testWorkout.makeWorkout()
+# print makeWorkout
+for key in testMakeWorkout:
+    value = testMakeWorkout[key]
+    # Print value[0].printExercise, value[1] and value[2]
+    value[0].printExercise()
+    print(f"Tags: {value[1]}\nIs Conditioning: {value[2]}\n\n")
+
