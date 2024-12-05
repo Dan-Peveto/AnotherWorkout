@@ -1,19 +1,32 @@
+# Imports
+from models.ProgramModels.workWeek import WorkWeek
 
 class Program:
     # create program class
-    def __init__(self, instanceName, instructionDict): # instruction Dict will be {Week1: [list of list with instuctions for the workout week class]}
-        self.instanceName = instanceName
+    def __init__(self, instructionDict): # instruction Dict will be {Week1: [list of list with instuctions for the workout week class]}
         if not isinstance(instructionDict, dict):
             raise TypeError("instructionDict must be a Dictionary")
-        self.programList = []
-        # use diction to create the list
+        self.instructionDict = instructionDict
+        self.programDict = {}
+
+    # Take the instruction dict and iterate over it and return as many instances of workWeek as there are keys for dict
+
+    def makeProgram(self):
+        # make the dictionary names easier to read
+        instructionDict = self.instructionDict
+        programDict = self.programDict
+        weekCount = 1
+        # For each key in instructionDict
         for key in instructionDict:
-            self.programList.append(key, instructionDict[key])
-    
-    # Methods
-    def lengthOfProgram(self):
-        # use the length of the program list to determine how long the program is
-        print("lengthOfProgram")
+            # Make instance of workweek for each key passing the values to the constructor
+            workWeek = WorkWeek(instructionDict[key])
+            #  call make workWeek
+            workWeek.makeWorkWeek()
+            # Add to dictionary
+            programDict[weekCount] = workWeek
+            # increment weekCount
+            weekCount += 1
+        
     
 
 

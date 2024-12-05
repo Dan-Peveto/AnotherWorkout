@@ -28,8 +28,7 @@ class Workout:
             # Add to dictioniry movementNumber : Instance of Exercise, Reps, Sets
             workoutDict[movementNumber] = exercise, movementList[1], movementList[2]
             movementNumber += 1
-        # Return workoutDict
-        return workoutDict
+        
     
 
 

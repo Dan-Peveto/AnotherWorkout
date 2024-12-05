@@ -5,5 +5,6 @@ import sqlite3
 
 class ProgramDatabaseManager:
     # init
-    def __init__(self):
-        print(ProgramDatabaseManager)
+    @staticmethod
+    def saveProgram(instructionDict):
+        print("In work")

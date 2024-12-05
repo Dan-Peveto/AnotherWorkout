@@ -35,7 +35,7 @@ from models.UserModels.userManager import UserManager # Import UserManager
 from models.ProgramModels.exercise import Exercise # Import Exercise
 from models.DataBaseManagement.exerciseDatabaseManager import ExerciseDatabaseManager # Import ExerciseDatabaseManager
 from models.ProgramModels.workWeek import WorkWeek
-
+from models.ProgramModels.program import Program
 
 # To Enter App UserManager.welcomeUser()
 """
@@ -63,16 +63,17 @@ loadedExercise.printClass()"""
 ExerciseDatabaseManager.printTable();
 # Make workoutList for use in test
 workoutWeekDict = {
-    1 : { 1 : ["push-ups", ["Chest", "Arms"], False] },
-    2 : { 1 : ["squats", ["Legs", "Core"], False] },
-    3 : { 1 : ["jog", ["Legs", "Soul"], True] }
+    "week1" :  {"day1" : {"movement1" : ["push-ups", ["Chest", "Arms"], False] }},
+    "week2" :  {"day2" : {"movement2" : ["squats", ["Legs", "Core"], False] }},
+    "week3" :  {"day3" : {"movememnt3" : ["jog", ["Legs", "Soul"], True] }}
 }
 # create class 
 
-testWorkout = WorkWeek(workoutWeekDict)
+testWorkout = Program(workoutWeekDict)
 
 # call makeWorkout
-testMakeWorkout = testWorkout.makeWorkWeek()
+testWorkout.makeProgram()
+print(testWorkout.programDict)
 
 
 
