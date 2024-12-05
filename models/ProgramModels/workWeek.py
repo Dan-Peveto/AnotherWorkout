@@ -1,5 +1,5 @@
 
-from workout import Workout
+from  models.ProgramModels.workout import Workout
 
 class WorkWeek:
     # Init Method will take in a dictionary of seven dictionaries list as such: { week 1 : { movement 1 : [exericeName, Reps, Sets]}} Off days will be signified as empty lists
@@ -11,14 +11,16 @@ class WorkWeek:
 
     def makeWorkWeek(self):
         # Take in a dictionary with seven keys (one for each day) and the value is a list of to create a workout instance
-        workWeekDict = {}
+        workWeekDict = self.workWeekDict
         weekCount = 1 # Key to keep track of week
         # For each key make a workout instance
         for key in self.programDict:
             # Create an instance of workout for each movement stored at each week
-            workout = Workout.makeWorkout(self.programDict[key])
+            workout = Workout(self.programDict[key])
+            workout.makeWorkout
             # Push new instances onto return dictionary with each day a key
-            self.workWeekDict[key] = workout
+            workWeekDict[weekCount] = workout
+            weekCount += 1
         # return dictionary
         return self.workWeekDict
         

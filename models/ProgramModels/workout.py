@@ -17,6 +17,7 @@ class Workout:
         workoutDict = self.workoutDict # The return dictionary with instructions to create a workout
         movementNumber = 1
         # for each key in exercise dictionary 
+       
         for key in exerciseDict:
             # name the list for readeability
             movementList  = exerciseDict[key]
