@@ -1,29 +1,28 @@
-
-# utilitiy class
+# Utility class
 class Util:
     
-    # clear screen class
+    # Clear screen class
     @staticmethod
-    def clearScreen(waitTime):
+    def clear_screen(wait_time):
         import os, time
         if os.name == "nt":
-            time.sleep(waitTime)
+            time.sleep(wait_time)
             os.system("cls")
         else:
-            time.sleep(waitTime)
+            time.sleep(wait_time)
             os.system("clear")
          
     @staticmethod
-    def tryAgain(methodOne, methodTwo):
+    def try_again(method_one, method_two):
         while True:
             print("Select 1 to try again")
             print("Select 2 to return to main menu")
-            userSelection = input("Your selection: ")
-            if userSelection == "1":
-                methodOne()
+            user_selection = input("Your selection: ")
+            if user_selection == "1":
+                method_one()
                 return 
-            if userSelection == "2":
-                methodTwo()
+            if user_selection == "2":
+                method_two()
                 return
             else:
-                print("Invalid selection Please Try Again")
+                print("Invalid selection. Please try again.")

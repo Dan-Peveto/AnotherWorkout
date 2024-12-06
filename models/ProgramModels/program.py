@@ -1,32 +1,27 @@
 # Imports
-from models.ProgramModels.workWeek import WorkWeek
+from models.ProgramModels.work_week import WorkWeek
 
 class Program:
-    # create program class
-    def __init__(self, instructionDict): # instruction Dict will be {Week1: [list of list with instuctions for the workout week class]}
-        if not isinstance(instructionDict, dict):
-            raise TypeError("instructionDict must be a Dictionary")
-        self.instructionDict = instructionDict
-        self.programDict = {}
+    # Create program class
+    def __init__(self, instruction_dict):  # instruction_dict will be {week_1: [list of list with instructions for the workout week class]}
+        if not isinstance(instruction_dict, dict):
+            raise TypeError("instruction_dict must be a dictionary")
+        self.instruction_dict = instruction_dict
+        self.program_dict = {}
 
-    # Take the instruction dict and iterate over it and return as many instances of workWeek as there are keys for dict
-
-    def makeProgram(self):
-        # make the dictionary names easier to read
-        instructionDict = self.instructionDict
-        programDict = self.programDict
-        weekCount = 1
-        # For each key in instructionDict
-        for key in instructionDict:
-            # Make instance of workweek for each key passing the values to the constructor
-            workWeek = WorkWeek(instructionDict[key])
-            #  call make workWeek
-            workWeek.makeWorkWeek()
+    # Take the instruction dict and iterate over it and return as many instances of work_week as there are keys for dict
+    def make_program(self):
+        # Make the dictionary names easier to read
+        instruction_dict = self.instruction_dict
+        program_dict = self.program_dict
+        week_count = 1
+        # For each key in instruction_dict
+        for key in instruction_dict:
+            # Make instance of work_week for each key passing the values to the constructor
+            work_week = WorkWeek(instruction_dict[key])
+            # Call make work_week
+            work_week.make_work_week()
             # Add to dictionary
-            programDict[weekCount] = workWeek
-            # increment weekCount
-            weekCount += 1
-        
-    
-
-
+            program_dict[week_count] = work_week
+            # Increment week_count
+            week_count += 1
